@@ -25,6 +25,7 @@
       <td><%= issuance.barcode_message_encoding %></td>
       <td><%= issuance.email %></td>
       <td><%= link_to 'Show', issuance, class: 'small button' %></td>
+      <td><%= link_to 'Download', issuance_url(issuance, format: 'pkpass'), class: 'small button' %></td>
       <td><%= link_to 'Edit', edit_issuance_path(issuance), class: 'secondary small button' %></td>
       <td><%= link_to 'Destroy', issuance, method: :delete, data: { confirm: 'Are you sure?' }, class: 'alert small button' %></td>
     </tr>

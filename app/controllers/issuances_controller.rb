@@ -18,6 +18,7 @@ class IssuancesController < ApplicationController
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @issuance }
+			format.pkpass { send_file @issuance.path }
     end
   end
 

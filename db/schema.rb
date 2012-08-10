@@ -11,14 +11,25 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120810162052) do
+ActiveRecord::Schema.define(:version => 20120810214330) do
 
   create_table "instances", :force => true do |t|
     t.datetime "relevant_date"
     t.string   "description"
     t.integer  "pass_id"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
+    t.datetime "created_at",           :null => false
+    t.datetime "updated_at",           :null => false
+    t.string   "logo"
+    t.string   "logo_2x"
+    t.string   "background"
+    t.string   "background_2x"
+    t.string   "icon"
+    t.string   "icon_2x"
+    t.string   "background_color"
+    t.string   "foreground_color"
+    t.string   "label_color"
+    t.string   "logo_text"
+    t.boolean  "suppress_strip_shine"
   end
 
   create_table "issuances", :force => true do |t|
@@ -38,6 +49,8 @@ ActiveRecord::Schema.define(:version => 20120810162052) do
     t.string   "team_identifier"
     t.datetime "created_at",           :null => false
     t.datetime "updated_at",           :null => false
+    t.string   "p12_file"
+    t.string   "p12_passcode"
   end
 
 end
