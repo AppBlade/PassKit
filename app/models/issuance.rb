@@ -2,7 +2,8 @@ class Issuance < ActiveRecord::Base
 
 	attr_accessible :barcode_alt_text, :barcode_format, :barcode_message, :barcode_message_encoding, :email, :instance_id
 
-	delegate :description, :relevant_date, :pass, :organization_name, :pass_type_identifier, :team_identifier, :to => :instance
+	delegate  :icon, :icon_2x, :logo, :logo_2x, :background, :background_2x, :background_color, :foreground_color, :logo_text, :label_color, :description, :relevant_date, :pass, :organization_name, :pass_type_identifier, :team_identifier, :to => :instance
+	delegate  :icon?, :icon_2x?, :logo?, :logo_2x?, :background?, :background_2x?, :background_color?, :foreground_color?, :label_color?, :to => :instance
 
 	belongs_to :instance, :touch => true
 
@@ -20,6 +21,11 @@ class Issuance < ActiveRecord::Base
 			issuance.generic do |generic|
 			end
 			issuance.relevantDate        relevant_date.utc.iso8601 if relevant_date
+			issuance.backgroundColor     background_color unless background_color.blank?
+			issuance.foregroundColor     foreground_color unless foreground_color.blank?
+			issuance.labelColor          label_color unless label_color.blank?
+			issuance.logoText            logo_text unless logo_text.blank?
+			issuance.suppressStripShine  false
 #			issuance.authenticationToken '123'
 # 		issuance.webServiceURL       'https://localhost'
 			issuance.barcode do |barcode|
@@ -41,33 +47,31 @@ class Issuance < ActiveRecord::Base
 			json.write to_builder.to_json
 			json.close
 
-			icon = File.open('/Users/james/Desktop/raizlabs/icon.png')
-			icon_2x = File.open('/Users/james/Desktop/raizlabs/icon@2x.png')
-			logo = File.open('/Users/james/Desktop/raizlabs/logo.png')
+			manifest_data = {'pass.json' => OpenSSL::Digest::SHA1.hexdigest(to_builder.to_json)}
 
-			manifest_data = {
-				'pass.json'   => OpenSSL::Digest::SHA1.hexdigest(to_builder.to_json), 
-				'icon.png'    => OpenSSL::Digest::SHA1.hexdigest(icon.read),
-				'icon@2x.png' => OpenSSL::Digest::SHA1.hexdigest(icon_2x.read),
-				'logo.png'    => OpenSSL::Digest::SHA1.hexdigest(logo.read)
-			}.to_json
+			manifest_data['icon.png']          = OpenSSL::Digest::SHA1.hexdigest(File.read(icon.path))          if icon?
+			manifest_data['icon@2x.png']       = OpenSSL::Digest::SHA1.hexdigest(File.read(icon_2x.path))       if icon_2x?
+			manifest_data['logo.png']          = OpenSSL::Digest::SHA1.hexdigest(File.read(logo.path))          if logo?
+			manifest_data['logo@2x.png']       = OpenSSL::Digest::SHA1.hexdigest(File.read(logo_2x.path))       if logo_2x?
+			manifest_data['background.png']    = OpenSSL::Digest::SHA1.hexdigest(File.read(background.path))    if background?
+			manifest_data['background@2x.png'] = OpenSSL::Digest::SHA1.hexdigest(File.read(background_2x.path)) if background_2x?
 
 			manifest = Tempfile.new('manifest')
-			manifest.write manifest_data
+			manifest.write manifest_data.to_json
 			manifest.close
 
 			signature = Tempfile.new('signature', :encoding => 'ASCII-8BIT')
-		 	signature.write	OpenSSL::PKCS7.sign(pass.pkcs12.certificate, pass.pkcs12.key, manifest_data, nil, OpenSSL::PKCS7::BINARY | OpenSSL::PKCS7::NOATTR | OpenSSL::PKCS7::DETACHED).to_der
+		 	signature.write	OpenSSL::PKCS7.sign(pass.pkcs12.certificate, pass.pkcs12.key, manifest_data.to_json, nil, OpenSSL::PKCS7::BINARY | OpenSSL::PKCS7::NOATTR | OpenSSL::PKCS7::DETACHED).to_der
 			signature.close
 
 			Zip::ZipFile.open "#{json.path}.pkpass", Zip::ZipFile::CREATE do |contents|
-				#contents.add 'background.png',    background.path
-				#contents.add 'background@2x.png', background_2x.path
+				contents.add 'background.png',    background.path     if background?
+				contents.add 'background@2x.png', background_2x.path  if background_2x?
 				contents.add 'pass.json',         json.path
-				contents.add 'icon.png',          icon.path
-				contents.add 'icon@2x.png',       icon_2x.path
-				contents.add 'logo.png',          logo.path
-				#contents.add 'logo@2x.png',       logo_2x.path
+				contents.add 'icon.png',          icon.path           if icon?
+				contents.add 'icon@2x.png',       icon_2x.path        if icon_2x?
+				contents.add 'logo.png',          logo.path           if logo?
+				contents.add 'logo@2x.png',       logo_2x.path        if logo_2x?
 				contents.add 'signature',         signature.path
 				contents.add 'manifest.json',     manifest.path
 			end

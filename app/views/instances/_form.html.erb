@@ -36,7 +36,51 @@
       <div class="nine columns">
     <%= f.text_field :description %>
     </div>
-  </div>
+	</div>
+
+	<div class="row">
+    <div class="three columns">
+    <%= f.label :logo_text, class: 'inline' %>
+      </div>
+      <div class="nine columns">
+    <%= f.text_field :logo_text %>
+    </div>
+	</div>
+
+	  <div class="row">
+    <div class="three columns">
+    <%= f.label :suppress_strip_shine, class: 'inline' %>
+      </div>
+      <div class="nine columns">
+    <%= f.check_box :description %>
+    </div>
+	</div>
+
+	<% %w(icon icon_2x logo logo_2x background background_2x).each do |field| %>
+		<div class="row">
+			<div class="three columns">
+				<%= f.label field, class: 'inline' %>
+			</div>
+			<div class="four columns">
+				<%= f.file_field field %>
+			</div>
+			<div class="five columns">
+				<%= image_tag f.object.send(field) if f.object.send("#{field}?") %>
+			</div>
+		</div>
+	<% end %>
+
+	<% %w(background_color foreground_color label_color).each do |field| %>
+		<div class="row">
+			<div class="three columns">
+				<%= f.label field, class: 'inline' %>
+			</div>
+			<div class="nine columns">
+				<%= f.text_field field %>
+			</div>
+		</div>
+	<% end %>
+
   <div class="actions text-right">
     <%= f.submit class: "success large button" %>
   </div>

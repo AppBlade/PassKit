@@ -3,7 +3,7 @@ class P12Uploader < CarrierWave::Uploader::Base
 	storage :file
 
 	def store_path(for_file = filename)
-		"system/#{model.id}/#{for_file}"
+		"system/passes/#{model.id}/#{for_file}"
 	end
 
 	def extension_white_list
