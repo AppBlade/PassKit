@@ -21,7 +21,14 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <%= yield %>
+  
+	<ul class="nav">
+    <li><%= link_to "Passes",  :passes %></li>
+    <li><%= link_to "Events",  '#' %></li>
+    <li><%= link_to "Tickets", '#' %></li>
+  </ul>
+	
+	<%= yield %>
 
   	<!-- Included JS Files  -->
 	<%= javascript_include_tag "application" %>
