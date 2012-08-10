@@ -31,4 +31,22 @@ class Issuance < ActiveRecord::Base
 		end
 	end
 
+	def path
+			json = Tempfile.new('passkey')
+			json.write to_builder.to_json
+			json.close
+			Zip::ZipFile.open "#{json.path}.pkpass", Zip::ZipFile::CREATE do |contents|
+				#zipfile.add 'background.png',    background.path
+				#zipfile.add 'background@2x.png', background_2x.path
+				contents.add 'pass.json',         json.path
+				#zipfile.add 'icon.png',          icon.path
+				#zipfile.add 'icon@2x.png',       icon_2x.path
+				#zipfile.add 'logo',              logo.path
+				#zipfile.add 'logo@2x.png',       logo_2x.path
+				#zipfile.add 'signature',         ''
+			end
+			return "#{json.path}.pkpass"
+			json.unlink
+	end
+
 end

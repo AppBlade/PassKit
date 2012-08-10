@@ -39,3 +39,5 @@ gem 'jbuilder'
 
 # To use debugger
 # gem 'debugger'
+
+gem 'rubyzip', :require => 'zip/zip'
