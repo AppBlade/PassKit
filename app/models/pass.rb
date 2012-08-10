@@ -1,6 +1,6 @@
 class Pass < ActiveRecord::Base
 
-	attr_accessible :description, :organization_name, :pass_type_identifier, :team_identifier
+	attr_accessible :organization_name, :pass_type_identifier, :team_identifier
 
 	has_many :instances, :dependent => :destroy
 	has_many :issuances, :through => :instances
