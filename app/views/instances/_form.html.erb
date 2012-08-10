@@ -65,7 +65,10 @@
 				<%= f.file_field field %>
 			</div>
 			<div class="five columns">
-				<%= image_tag f.object.send(field) if f.object.send("#{field}?") %>
+				<% if f.object.send("#{field}?") %>
+					<%= image_tag f.object.send(field) %>
+					<label><%= f.check_box "remove_#{field}" %> Remove <%= field %></label>
+				<% end %>
 			</div>
 		</div>
 	<% end %>

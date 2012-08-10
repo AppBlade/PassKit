@@ -1,6 +1,6 @@
 class Instance < ActiveRecord::Base
 
-	attr_accessible :description, :relevant_date, :pass_id, :icon, :icon_2x, :logo, :logo_2x, :background, :background_2x, :background_color, :foreground_color, :label_color, :logo_text, :suppress_strip_shine
+	attr_accessible :remove_icon, :remove_logo, :remove_background, :description, :relevant_date, :pass_id, :icon, :icon_2x, :logo, :logo_2x, :background, :background_2x, :background_color, :foreground_color, :label_color, :logo_text, :suppress_strip_shine
 
 	delegate :organization_name, :pass_type_identifier, :team_identifier, :to => :pass
 
