@@ -19,6 +19,13 @@ class Issuance < ActiveRecord::Base
 			issuance.serialNumber        id.to_s
 			issuance.teamIdentifier      team_identifier
 			issuance.generic do |generic|
+=begin
+				generic.headerFields [{key: 'title', label:"SOMETHING", value:"something"}, {key: 'title2', label:"SOMETHING", value:"something"}]
+				generic.primaryFields [{key: 'something2', label:"SOMETHING", value:"SOMETHING ELSE"}]
+				generic.secondaryFields [{key: 'something3', label:"SOMETHING", value:"SOMETHING ELSE"}]
+				generic.auxiliaryFields [{key: 'something4', label:"SOMETHING", value:"SOMETHING ELSE"}]
+				generic.backFields [{key: 'something5', label:"SOMETHING", value:"SOMETHING ELSE"}]
+=end
 			end
 			issuance.relevantDate        relevant_date.utc.iso8601 if relevant_date
 			issuance.backgroundColor     background_color unless background_color.blank?
