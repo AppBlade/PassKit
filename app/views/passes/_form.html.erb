@@ -13,29 +13,24 @@
 
   <div class="row">
     <div class="five columns">
-    <%= f.label :organization_name, class: 'inline' %>
-  </div>
-  <div class="seven columns">
-    <%= f.text_field :organization_name %>
-  </div>
-  </div>
-  <div class="row">
+			<%= f.label :p12_file, class: 'inline' %>
+		</div>
+		<div class="seven columns">
+			<%= f.file_field :p12_file %>
+		</div>
+	</div>
+
+	<div class="row">
     <div class="five columns">
-    <%= f.label :pass_type_identifier, class: 'inline' %>
-    </div>
-  <div class="seven columns">
-    <%= f.text_field :pass_type_identifier %>
-    </div>
+			<%= f.label :p12_passcode, class: 'inline' %>
+		</div>
+		<div class="seven columns">
+			<%= f.password_field :p12_passcode %>
+		</div>
   </div>
-  <div class="row">
-    <div class="five columns">
-    <%= f.label :team_identifier, class: 'inline' %>
-    </div>
-  <div class="seven columns">
-    <%= f.text_field :team_identifier %>
-    </div>
-  </div>
-  <div class="actions text-right">
+
+	
+	<div class="actions text-right">
     <%= f.submit class: 'success large button' %>
   </div>
 <% end %>

@@ -32,7 +32,7 @@
     <%= f.label :barcode_format, class: 'inline' %>
         </div>
     <div class="seven columns">
-    <%= f.text_field :barcode_format %>
+    <%= f.select :barcode_format, Issuance::BarcodeFormats %>
   </div>
   </div>
   <div class="row">
@@ -48,7 +48,7 @@
     <%= f.label :barcode_message_encoding, class: 'inline' %>
         </div>
     <div class="seven columns">
-    <%= f.text_field :barcode_message_encoding %>
+    <%= f.select :barcode_message_encoding, Issuance::BarcodeMessageEncodings %>
   </div>
   </div>
   <div class="row">

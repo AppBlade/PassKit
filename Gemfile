@@ -41,3 +41,5 @@ gem 'jbuilder'
 # gem 'debugger'
 
 gem 'rubyzip', :require => 'zip/zip'
+
+gem 'carrierwave'

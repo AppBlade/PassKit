@@ -6,6 +6,9 @@ class Issuance < ActiveRecord::Base
 
 	belongs_to :instance, :touch => true
 
+	BarcodeFormats = %w(PKBarcodeFormatQR PKBarcodeFormatPDF417 PKBarcodeFormatAztec)
+	BarcodeMessageEncodings = %w(iso-8859-1)
+
 	def to_builder
 		Jbuilder.new.tap do |issuance|
 			issuance.description         description
@@ -42,8 +45,6 @@ class Issuance < ActiveRecord::Base
 			icon_2x = File.open('/Users/james/Desktop/raizlabs/icon@2x.png')
 			logo = File.open('/Users/james/Desktop/raizlabs/logo.png')
 
-			p12 = OpenSSL::PKCS12.new File.read('/Users/james/Desktop/Certificates.p12'), 'asdf'
-
 			manifest_data = {
 				'pass.json'   => OpenSSL::Digest::SHA1.hexdigest(to_builder.to_json), 
 				'icon.png'    => OpenSSL::Digest::SHA1.hexdigest(icon.read),
@@ -56,7 +57,7 @@ class Issuance < ActiveRecord::Base
 			manifest.close
 
 			signature = Tempfile.new('signature', :encoding => 'ASCII-8BIT')
-		 	signature.write	OpenSSL::PKCS7.sign(p12.certificate, p12.key, manifest_data, nil, OpenSSL::PKCS7::BINARY | OpenSSL::PKCS7::NOATTR | OpenSSL::PKCS7::DETACHED).to_der
+		 	signature.write	OpenSSL::PKCS7.sign(pass.pkcs12.certificate, pass.pkcs12.key, manifest_data, nil, OpenSSL::PKCS7::BINARY | OpenSSL::PKCS7::NOATTR | OpenSSL::PKCS7::DETACHED).to_der
 			signature.close
 
 			Zip::ZipFile.open "#{json.path}.pkpass", Zip::ZipFile::CREATE do |contents|
