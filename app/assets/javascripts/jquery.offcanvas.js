@@ -12,6 +12,7 @@ $(function() {
   if ($selector3.length > 0)  {
     $('#menuButton').on(events, function(e) {
       e.preventDefault();
+      $selector1.removeClass('hide-for-small');
       $('body').toggleClass('active-menu');
     });
   }

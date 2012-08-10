@@ -28,7 +28,7 @@ footer { background: #555; color: #fff; padding: 10px 0; }
 
 .hide-extras [role="complementary"] { display: block; }
 
-/*[role="navigation"]#topMenu { -webkit-transition: 0.25s all ease-in; -moz-transition: 0.25s all ease-in; -ms-transition: 0.25s all ease-in; -o-transition: 0.25s all ease-in; transition: 0.25s all ease-in; }*/
+[role="navigation"]#topMenu { -webkit-transition: 0.25s all ease-in; -moz-transition: 0.25s all ease-in; -ms-transition: 0.25s all ease-in; -o-transition: 0.25s all ease-in; transition: 0.25s all ease-in; }
 
 [role="navigation"]#topMenu ul { margin-top: 0;}
 

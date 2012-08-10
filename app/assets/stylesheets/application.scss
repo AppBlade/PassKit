@@ -87,9 +87,6 @@ p a.button, p a.button:visited {
  }
 
  @media only screen and (max-width: 767px) {
- 	[role="navigation"]#topMenu {
-		display:block !important;
-	}
 	
  	.nav-container .nav-bar li {
  		float: none;
@@ -102,7 +99,7 @@ p a.button, p a.button:visited {
  	}
  }
 
- /* page specific styles */
+ /* page specific styles -*/
 
  #date-select select {
  	width: auto;
