@@ -12,11 +12,13 @@ class Issuance < ActiveRecord::Base
 			issuance.formatVersion       1
 			issuance.organizationName    organization_name
 			issuance.passTypeIdentifier  pass_type_identifier
-			issuance.serialNumber        id
+			issuance.serialNumber        id.to_s
 			issuance.teamIdentifier      team_identifier
+			issuance.generic do |generic|
+			end
 			issuance.relevantDate        relevant_date.utc.iso8601 if relevant_date
-			issuance.authenticationToken '123'
-			issuance.webServiceURL       'https://localhost'
+#			issuance.authenticationToken '123'
+# 		issuance.webServiceURL       'https://localhost'
 			issuance.barcode do |barcode|
 				barcode.altText         barcode_alt_text unless barcode_alt_text.blank?
 				barcode.format          barcode_format
@@ -35,18 +37,44 @@ class Issuance < ActiveRecord::Base
 			json = Tempfile.new('passkey')
 			json.write to_builder.to_json
 			json.close
+
+			icon = File.open('/Users/james/Desktop/raizlabs/icon.png')
+			icon_2x = File.open('/Users/james/Desktop/raizlabs/icon@2x.png')
+			logo = File.open('/Users/james/Desktop/raizlabs/logo.png')
+
+			p12 = OpenSSL::PKCS12.new File.read('/Users/james/Desktop/Certificates.p12'), 'asdf'
+
+			manifest_data = {
+				'pass.json'   => OpenSSL::Digest::SHA1.hexdigest(to_builder.to_json), 
+				'icon.png'    => OpenSSL::Digest::SHA1.hexdigest(icon.read),
+				'icon@2x.png' => OpenSSL::Digest::SHA1.hexdigest(icon_2x.read),
+				'logo.png'    => OpenSSL::Digest::SHA1.hexdigest(logo.read)
+			}.to_json
+
+			manifest = Tempfile.new('manifest')
+			manifest.write manifest_data
+			manifest.close
+
+			signature = Tempfile.new('signature', :encoding => 'ASCII-8BIT')
+		 	signature.write	OpenSSL::PKCS7.sign(p12.certificate, p12.key, manifest_data, nil, OpenSSL::PKCS7::BINARY | OpenSSL::PKCS7::NOATTR | OpenSSL::PKCS7::DETACHED).to_der
+			signature.close
+
 			Zip::ZipFile.open "#{json.path}.pkpass", Zip::ZipFile::CREATE do |contents|
-				#zipfile.add 'background.png',    background.path
-				#zipfile.add 'background@2x.png', background_2x.path
+				#contents.add 'background.png',    background.path
+				#contents.add 'background@2x.png', background_2x.path
 				contents.add 'pass.json',         json.path
-				#zipfile.add 'icon.png',          icon.path
-				#zipfile.add 'icon@2x.png',       icon_2x.path
-				#zipfile.add 'logo',              logo.path
-				#zipfile.add 'logo@2x.png',       logo_2x.path
-				#zipfile.add 'signature',         ''
+				contents.add 'icon.png',          icon.path
+				contents.add 'icon@2x.png',       icon_2x.path
+				contents.add 'logo.png',          logo.path
+				#contents.add 'logo@2x.png',       logo_2x.path
+				contents.add 'signature',         signature.path
+				contents.add 'manifest.json',     manifest.path
 			end
+			
 			return "#{json.path}.pkpass"
+
 			json.unlink
+			signature.unlink
 	end
 
 end
