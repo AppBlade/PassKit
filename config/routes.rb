@@ -1,5 +1,7 @@
 PassKit::Application.routes.draw do
 
+  resources :instances
+
 	resources :passes
 
 	root :to => 'passes#index'

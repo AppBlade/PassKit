@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Pass:</b>
+  <%= @instance.pass %>
+</p>
+
+<p>
+  <b>Relevant date:</b>
+  <%= @instance.relevant_date %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @instance.description %>
+</p>
+
+
+<%= link_to 'Edit', edit_instance_path(@instance) %> |
+<%= link_to 'Back', instances_path %>

@@ -11,10 +11,17 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120810150155) do
+ActiveRecord::Schema.define(:version => 20120810160718) do
+
+  create_table "instances", :force => true do |t|
+    t.datetime "relevant_date"
+    t.string   "description"
+    t.integer  "pass_id"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
 
   create_table "passes", :force => true do |t|
-    t.string   "description"
     t.string   "organization_name"
     t.string   "pass_type_identifier"
     t.string   "team_identifier"
