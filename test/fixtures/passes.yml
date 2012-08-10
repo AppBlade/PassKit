@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  description: MyString
+  organization_name: MyString
+  pass_type_identifier: MyString
+  team_identifier: MyString
+
+two:
+  description: MyString
+  organization_name: MyString
+  pass_type_identifier: MyString
+  team_identifier: MyString

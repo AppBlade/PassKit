@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Description:</b>
+  <%= @pass.description %>
+</p>
+
+<p>
+  <b>Organization name:</b>
+  <%= @pass.organization_name %>
+</p>
+
+<p>
+  <b>Pass type identifier:</b>
+  <%= @pass.pass_type_identifier %>
+</p>
+
+<p>
+  <b>Team identifier:</b>
+  <%= @pass.team_identifier %>
+</p>
+
+
+<%= link_to 'Edit', edit_pass_path(@pass) %> |
+<%= link_to 'Back', passes_path %>

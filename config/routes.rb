@@ -1,4 +1,9 @@
 PassKit::Application.routes.draw do
+
+	resources :passes
+
+	root :to => 'passes#index'
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
