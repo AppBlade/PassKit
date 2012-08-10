@@ -7,4 +7,9 @@ class IssuanceMailer < ActionMailer::Base
 		mail :to => @issuance.email, subject: "Welcome to PassKit"
 	end
 
+	def event_updated(issuance_id)
+		@issuance = Issuance.find(issuance_id)
+		@instance = @issuance.instance
+		mail :to => @issuance.email, subject: "#{@instance.description} has been updated"
+	end
 end
