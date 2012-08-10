@@ -21,14 +21,23 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-  
-	<ul class="nav">
-    <li><%= link_to "Passes",  :passes %></li>
-    <li><%= link_to "Events",  :instances %></li>
-    <li><%= link_to "Tickets", :issuances %></li>
-  </ul>
-	
-	<%= yield %>
+	<div class="nav-container">
+		<div class="row">
+			<div class="six columns" id="home">
+				<%= link_to 'PassKit', root_path %>
+			</div>
+			<div class="six columns">
+				<ul class="nav-bar">
+					<li><%= link_to "Passes",  :passes %></li>
+				    <li><%= link_to "Events",  :instances %></li>
+				    <li><%= link_to "Tickets", :issuances %></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<%= yield %>
+	</div>
 
   	<!-- Included JS Files  -->
 	<%= javascript_include_tag "application" %>

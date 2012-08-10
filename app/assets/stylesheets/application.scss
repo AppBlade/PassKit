@@ -13,4 +13,61 @@
  *= require_tree .
  */
 
- @import "foundation";
+a:hover {
+	background-color: transparent;
+	text-decoration: underline;
+}
+
+ .nav-container {
+
+ 	background: #1E68C5;
+
+ 	#home {
+ 		font-size: 1.5em;
+ 		padding-top: 0.4em;
+
+ 		a {
+ 			color: #f6f3ff;
+ 		}
+
+ 		a:hover {
+ 			background: none;
+ 			text-decoration: underline;
+ 		}
+ 	}
+
+ 	.nav-bar {
+ 		margin-top: 0;
+ 		background: transparent;
+ 		height: auto;
+
+ 		li{
+ 			float: right;
+ 			border-color: #3783D0;
+ 			border-top: 0;
+ 			border-bottom: 0;
+ 			-webkit-box-shadow: 0 0 0;
+			-moz-box-shadow: 0 0 0;
+			box-shadow: 0 0 0;
+
+			a:hover {
+				background:#6793f0;
+			}
+ 		}
+
+ 		& > li:last-child {
+ 			border-right-width: 0;
+ 			-webkit-box-shadow: 0 0 0;
+			-moz-box-shadow: 0 0 0;
+			box-shadow: 0 0 0;
+ 		}
+
+ 		& > li:first-child {
+ 			border-right: 1px solid #3783D0;
+ 			-webkit-box-shadow: 0 0 0;
+			-moz-box-shadow: 0 0 0;
+			box-shadow: 0 0 0;
+ 		}
+ 	}
+
+ }
