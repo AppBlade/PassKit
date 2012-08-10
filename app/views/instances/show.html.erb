@@ -1,23 +1,24 @@
+<div class="twelve columns">
+	<% if notice %>
+		<div class="alert-box"><%= notice %><a href="" class="close">&times;</a></div>
+	<% end %>
 
-<% if notice %>
-	<div class="alert-box"><%= notice %></div>
-<% end %>
+	<p>
+	  <b>Pass:</b>
+	  <%= @instance.pass %>
+	</p>
 
-<p>
-  <b>Pass:</b>
-  <%= @instance.pass %>
-</p>
+	<p>
+	  <b>Relevant date:</b>
+	  <%= @instance.relevant_date %>
+	</p>
 
-<p>
-  <b>Relevant date:</b>
-  <%= @instance.relevant_date %>
-</p>
-
-<p>
-  <b>Description:</b>
-  <%= @instance.description %>
-</p>
+	<p>
+	  <b>Description:</b>
+	  <%= @instance.description %>
+	</p>
 
 
-<%= link_to 'Edit', edit_instance_path(@instance), class: 'medium button' %>
-<%= link_to 'Back', instances_path, class: 'secondary medium button' %>
+	<%= link_to 'Edit', edit_instance_path(@instance), class: 'medium button' %>
+	<%= link_to 'Back', instances_path, class: 'secondary medium button' %>
+</div>

@@ -1,36 +1,38 @@
-<h1>Listing issuances</h1>
+<div class="twelve columns">
+  <h1>Listing issuances</h1>
 
-<table>
-    <thead>
-  <tr>
-    <th>Instance</th>
-    <th>Barcode alt text</th>
-    <th>Barcode format</th>
-    <th>Barcode message</th>
-    <th>Barcode message encoding</th>
-    <th>Email</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-  </thead>
-<tbody>
-<% @issuances.each do |issuance| %>
-  <tr>
-    <td><%= issuance.instance %></td>
-    <td><%= issuance.barcode_alt_text %></td>
-    <td><%= issuance.barcode_format %></td>
-    <td><%= issuance.barcode_message %></td>
-    <td><%= issuance.barcode_message_encoding %></td>
-    <td><%= issuance.email %></td>
-    <td><%= link_to 'Show', issuance, class: 'small button' %></td>
-    <td><%= link_to 'Edit', edit_issuance_path(issuance), class: 'secondary small button' %></td>
-    <td><%= link_to 'Destroy', issuance, method: :delete, data: { confirm: 'Are you sure?' }, class: 'alert small button' %></td>
-  </tr>
-<% end %>
-</tbody>
-</table>
+  <table>
+      <thead>
+    <tr>
+      <th>Instance</th>
+      <th>Barcode alt text</th>
+      <th>Barcode format</th>
+      <th>Barcode message</th>
+      <th>Barcode message encoding</th>
+      <th>Email</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+    </thead>
+  <tbody>
+  <% @issuances.each do |issuance| %>
+    <tr>
+      <td><%= issuance.instance %></td>
+      <td><%= issuance.barcode_alt_text %></td>
+      <td><%= issuance.barcode_format %></td>
+      <td><%= issuance.barcode_message %></td>
+      <td><%= issuance.barcode_message_encoding %></td>
+      <td><%= issuance.email %></td>
+      <td><%= link_to 'Show', issuance, class: 'small button' %></td>
+      <td><%= link_to 'Edit', edit_issuance_path(issuance), class: 'secondary small button' %></td>
+      <td><%= link_to 'Destroy', issuance, method: :delete, data: { confirm: 'Are you sure?' }, class: 'alert small button' %></td>
+    </tr>
+  <% end %>
+  </tbody>
+  </table>
 
-<br />
+  <br />
 
-<%= link_to 'New Issuance', new_issuance_path, class: 'secondary medium button' %>
+  <%= link_to 'New Issuance', new_issuance_path, class: 'secondary medium button' %>
+</div>
