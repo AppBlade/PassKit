@@ -4,6 +4,8 @@ class IssuancesController < ApplicationController
   def index
     @issuances = Issuance.all
 
+    @issuances_grouped = @issuances.group_by(&:instance)
+
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @issuances }

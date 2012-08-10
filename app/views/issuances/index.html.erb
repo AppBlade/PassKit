@@ -1,10 +1,10 @@
 <div class="twelve columns">
   <h1>Listing tickets</h1>
-
+  <% @issuances_grouped.keys.sort.each do |instance| %>
+  <h4><%= instance %></h4>
   <table class="responsive">
       <thead>
     <tr>
-      <th>Instance</th>
       <th>Barcode alt text</th>
       <th>Barcode format</th>
       <th>Barcode message</th>
@@ -13,12 +13,12 @@
       <th></th>
       <th></th>
       <th></th>
+      <th></th>
     </tr>
     </thead>
   <tbody>
-  <% @issuances.each do |issuance| %>
+    <% for issuance in @issuances_grouped[instance] %>
     <tr>
-      <td><%= issuance.instance %></td>
       <td><%= issuance.barcode_alt_text %></td>
       <td><%= issuance.barcode_format %></td>
       <td><%= issuance.barcode_message %></td>
@@ -29,11 +29,12 @@
       <td><%= link_to 'Edit', edit_issuance_path(issuance), class: 'secondary small button' %></td>
       <td><%= link_to 'Destroy', issuance, method: :delete, data: { confirm: 'Are you sure?' }, class: 'alert small button' %></td>
     </tr>
-  <% end %>
-  </tbody>
+    <% end %>
+      </tbody>
   </table>
+  <% end %>
 
   <br />
 
-  <%= link_to 'New Issuance', new_issuance_path, class: 'secondary medium button' %>
+  <%= link_to 'New Ticket', new_issuance_path, class: 'secondary medium button' %>
 </div>
