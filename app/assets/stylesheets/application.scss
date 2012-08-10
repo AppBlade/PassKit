@@ -18,7 +18,13 @@ a:hover {
 	text-decoration: underline;
 }
 
+p a.button, p a.button:visited {
+	line-height: 1;
+}
+
  .nav-container {
+ 	position: relative;;
+ 	z-index: 10;
 
  	background: #1E68C5;
  	margin-bottom: 20px;
@@ -26,6 +32,8 @@ a:hover {
  	#home {
  		font-size: 1.5em;
  		padding-top: 0.4em;
+ 		position: relative;
+ 		z-index: 10;
 
  		a {
  			color: #f6f3ff;
@@ -35,6 +43,11 @@ a:hover {
  			background: none;
  			text-decoration: underline;
  		}
+ 	}
+
+ 	#menuButton {
+ 		position: relative;
+ 		z-index: 10;
  	}
 
  	.nav-bar {
@@ -71,6 +84,22 @@ a:hover {
  		}
  	}
 
+ }
+
+ @media only screen and (max-width: 767px) {
+ 	[role="navigation"]#topMenu {
+		display:block !important;
+	}
+	
+ 	.nav-container .nav-bar li {
+ 		float: none;
+ 		border-top: 1px solid #3783D0;
+ 		border-left: 0;
+ 		border-right: 0;
+ 	}
+ 	.nav-container .nav-bar > li:first-child {
+ 		border-right:0;
+ 	}
  }
 
  /* page specific styles */

@@ -1,6 +1,5 @@
 class IssuanceMailer < ActionMailer::Base
 
-	include Resque::Mailer
 	default :from => 'AppBlade Support <support@appblade.com>', :reply_to => "support@appblade.com"
 
 	def sign_up(issuance_id)

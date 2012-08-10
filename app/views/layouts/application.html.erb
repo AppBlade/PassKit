@@ -20,17 +20,20 @@
   
   <%= csrf_meta_tags %>
 </head>
-<body>
+<body class="off-canvas slide-nav">
 	<div class="nav-container">
 		<div class="row">
-			<div class="six columns" id="home">
+			<div class="six columns mobile-two" id="home">
 				<%= link_to 'PassKit', root_path %>
 			</div>
-			<div class="six columns">
-				<ul class="nav-bar">
-					<li><%= link_to "Passes",  :passes %></li>
+			<div class="mobile-two columns text-right show-for-small">
+				<a class='menu-button button' id="menuButton" href="#menu">Menu</a>
+			</div>
+			<div class="six columns mobile-four hide-for-small" role="navigation" id="topMenu">
+				<ul class="nav-bar" id="nav">
+					<li><%= link_to "Tickets", :issuances %></li>
 				    <li><%= link_to "Events",  :instances %></li>
-				    <li><%= link_to "Tickets", :issuances %></li>
+				    <li><%= link_to "Passes",  :passes %></li>
 				</ul>
 			</div>
 		</div>
