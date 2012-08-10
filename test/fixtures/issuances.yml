@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  instance_id: 1
+  barcode_alt_text: MyString
+  barcode_format: MyString
+  barcode_message: MyString
+  barcode_message_encoding: MyString
+  email: MyString
+
+two:
+  instance_id: 1
+  barcode_alt_text: MyString
+  barcode_format: MyString
+  barcode_message: MyString
+  barcode_message_encoding: MyString
+  email: MyString

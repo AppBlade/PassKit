@@ -4,6 +4,8 @@ class Instance < ActiveRecord::Base
 
 	belongs_to :pass, :touch => true
 
+	has_many :issuances, :dependent => :destroy
+
 	def to_s
 		description
 	end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120810160718) do
+ActiveRecord::Schema.define(:version => 20120810162052) do
 
   create_table "instances", :force => true do |t|
     t.datetime "relevant_date"
@@ -19,6 +19,17 @@ ActiveRecord::Schema.define(:version => 20120810160718) do
     t.integer  "pass_id"
     t.datetime "created_at",    :null => false
     t.datetime "updated_at",    :null => false
+  end
+
+  create_table "issuances", :force => true do |t|
+    t.integer  "instance_id"
+    t.string   "barcode_alt_text"
+    t.string   "barcode_format"
+    t.string   "barcode_message"
+    t.string   "barcode_message_encoding"
+    t.string   "email"
+    t.datetime "created_at",               :null => false
+    t.datetime "updated_at",               :null => false
   end
 
   create_table "passes", :force => true do |t|

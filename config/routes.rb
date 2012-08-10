@@ -1,5 +1,7 @@
 PassKit::Application.routes.draw do
 
+  resources :issuances
+
   resources :instances
 
 	resources :passes

@@ -1,0 +1,41 @@
+<%= form_for(@issuance) do |f| %>
+  <% if @issuance.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@issuance.errors.count, "error") %> prohibited this issuance from being saved:</h2>
+
+      <ul>
+      <% @issuance.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :instance_id %><br />
+    <%= f.collection_select :instance_id, Instance.all, :id, :to_s %>
+  </div>
+  <div class="field">
+    <%= f.label :barcode_alt_text %><br />
+    <%= f.text_field :barcode_alt_text %>
+  </div>
+  <div class="field">
+    <%= f.label :barcode_format %><br />
+    <%= f.text_field :barcode_format %>
+  </div>
+  <div class="field">
+    <%= f.label :barcode_message %><br />
+    <%= f.text_field :barcode_message %>
+  </div>
+  <div class="field">
+    <%= f.label :barcode_message_encoding %><br />
+    <%= f.text_field :barcode_message_encoding %>
+  </div>
+  <div class="field">
+    <%= f.label :email %><br />
+    <%= f.text_field :email %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

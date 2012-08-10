@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Instance:</b>
+  <%= @issuance.instance %>
+</p>
+
+<p>
+  <b>Barcode alt text:</b>
+  <%= @issuance.barcode_alt_text %>
+</p>
+
+<p>
+  <b>Barcode format:</b>
+  <%= @issuance.barcode_format %>
+</p>
+
+<p>
+  <b>Barcode message:</b>
+  <%= @issuance.barcode_message %>
+</p>
+
+<p>
+  <b>Barcode message encoding:</b>
+  <%= @issuance.barcode_message_encoding %>
+</p>
+
+<p>
+  <b>Email:</b>
+  <%= @issuance.email %>
+</p>
+
+
+<%= link_to 'Edit', edit_issuance_path(@issuance) %> |
+<%= link_to 'Back', issuances_path %>
