@@ -11,31 +11,55 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :instance_id %><br />
+  <div class="row">
+    <div class="five columns">
+    <%= f.label :instance_id, class: 'inline' %>
+    </div>
+    <div class="seven columns">
     <%= f.collection_select :instance_id, Instance.all, :id, :to_s %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :barcode_alt_text %><br />
+  <div class="row">
+    <div class="five columns">
+    <%= f.label :barcode_alt_text, class: 'inline' %>
+    </div>
+    <div class="seven columns">
     <%= f.text_field :barcode_alt_text %>
   </div>
-  <div class="field">
-    <%= f.label :barcode_format %><br />
+  </div>
+  <div class="row">
+    <div class="five columns">
+    <%= f.label :barcode_format, class: 'inline' %>
+        </div>
+    <div class="seven columns">
     <%= f.text_field :barcode_format %>
   </div>
-  <div class="field">
-    <%= f.label :barcode_message %><br />
+  </div>
+  <div class="row">
+    <div class="five columns">
+    <%= f.label :barcode_message, class: 'inline' %>
+        </div>
+    <div class="seven columns">
     <%= f.text_field :barcode_message %>
   </div>
-  <div class="field">
-    <%= f.label :barcode_message_encoding %><br />
+  </div>
+  <div class="row">
+    <div class="five columns">
+    <%= f.label :barcode_message_encoding, class: 'inline' %>
+        </div>
+    <div class="seven columns">
     <%= f.text_field :barcode_message_encoding %>
   </div>
-  <div class="field">
-    <%= f.label :email %><br />
+  </div>
+  <div class="row">
+    <div class="five columns">
+    <%= f.label :email, class: 'inline' %>
+        </div>
+    <div class="seven columns">
     <%= f.text_field :email %>
   </div>
-  <div class="actions">
-    <%= f.submit %>
+  </div>
+  <div class="actions text-right">
+    <%= f.submit class: 'success large button' %>
   </div>
 <% end %>

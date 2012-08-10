@@ -1,7 +1,8 @@
 <h1>Listing passes</h1>
 
 <table>
-  <tr>
+  <thead>
+    <tr>
     <th>Organization name</th>
     <th>Pass type identifier</th>
     <th>Team identifier</th>
@@ -9,19 +10,21 @@
     <th></th>
     <th></th>
   </tr>
-
+</thead>
+<tbody>
 <% @passes.each do |pass| %>
   <tr>
     <td><%= pass.organization_name %></td>
     <td><%= pass.pass_type_identifier %></td>
     <td><%= pass.team_identifier %></td>
-    <td><%= link_to 'Show', pass %></td>
-    <td><%= link_to 'Edit', edit_pass_path(pass) %></td>
-    <td><%= link_to 'Destroy', pass, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= link_to 'Show', pass, class: 'small button' %></td>
+    <td><%= link_to 'Edit', edit_pass_path(pass), class: 'secondary small button' %></td>
+    <td><%= link_to 'Destroy', pass, method: :delete, data: { confirm: 'Are you sure?' }, class: 'alert small button' %></td>
   </tr>
 <% end %>
+</tbody>
 </table>
 
 <br />
 
-<%= link_to 'New Pass', new_pass_path %>
+<%= link_to 'New Pass', new_pass_path, class: 'secondary medium button' %>

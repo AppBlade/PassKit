@@ -1,6 +1,10 @@
-<h1>Editing issuance</h1>
+<div class="six columns offset-by-three end">
+	<h1>Editing issuance</h1>
 
-<%= render 'form' %>
+	<%= render 'form' %>
 
-<%= link_to 'Show', @issuance %> |
-<%= link_to 'Back', issuances_path %>
+	<p class="text-right">
+	<%= link_to 'Show', @issuance, class: 'small button' %>
+	<%= link_to 'Back', issuances_path, class: 'secondary small button' %>
+	</p>
+</div>

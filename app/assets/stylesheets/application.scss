@@ -21,6 +21,7 @@ a:hover {
  .nav-container {
 
  	background: #1E68C5;
+ 	margin-bottom: 20px;
 
  	#home {
  		font-size: 1.5em;
@@ -70,4 +71,10 @@ a:hover {
  		}
  	}
 
+ }
+
+ /* page specific styles */
+
+ #date-select select {
+ 	width: auto;
  }

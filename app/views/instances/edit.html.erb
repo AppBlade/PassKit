@@ -1,6 +1,10 @@
-<h1>Editing instance</h1>
+<div class="six columns offset-by-three end">
+	<h1>Editing instance</h1>
 
-<%= render 'form' %>
+	<%= render 'form' %>
 
-<%= link_to 'Show', @instance %> |
-<%= link_to 'Back', instances_path %>
+	<p class="text-right">
+		<%= link_to 'Show', @instance, class: 'small button' %>
+		<%= link_to 'Back', instances_path, class: 'secondary small button' %>
+	</p>
+</div>

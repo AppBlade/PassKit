@@ -11,19 +11,31 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :organization_name %><br />
+  <div class="row">
+    <div class="five columns">
+    <%= f.label :organization_name, class: 'inline' %>
+  </div>
+  <div class="seven columns">
     <%= f.text_field :organization_name %>
   </div>
-  <div class="field">
-    <%= f.label :pass_type_identifier %><br />
+  </div>
+  <div class="row">
+    <div class="five columns">
+    <%= f.label :pass_type_identifier, class: 'inline' %>
+    </div>
+  <div class="seven columns">
     <%= f.text_field :pass_type_identifier %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :team_identifier %><br />
+  <div class="row">
+    <div class="five columns">
+    <%= f.label :team_identifier, class: 'inline' %>
+    </div>
+  <div class="seven columns">
     <%= f.text_field :team_identifier %>
+    </div>
   </div>
-  <div class="actions">
-    <%= f.submit %>
+  <div class="actions text-right">
+    <%= f.submit class: 'success large button' %>
   </div>
 <% end %>

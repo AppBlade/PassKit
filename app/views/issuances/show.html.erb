@@ -1,4 +1,6 @@
-<p id="notice"><%= notice %></p>
+<% if notice %>
+  <div class="alert-box"><%= notice %></div>
+<% end %>
 
 <p>
   <b>Instance:</b>
@@ -31,5 +33,5 @@
 </p>
 
 
-<%= link_to 'Edit', edit_issuance_path(@issuance) %> |
-<%= link_to 'Back', issuances_path %>
+<%= link_to 'Edit', edit_issuance_path(@issuance), class: 'medium button' %>
+<%= link_to 'Back', issuances_path, class: 'secondary medium button' %>

@@ -1,4 +1,6 @@
-<p id="notice"><%= notice %></p>
+<% if notice %>
+	<div class="alert-box"><%= notice %></div>
+<% end %>
 
 <p>
   <b>Organization name:</b>
@@ -16,5 +18,5 @@
 </p>
 
 
-<%= link_to 'Edit', edit_pass_path(@pass) %> |
-<%= link_to 'Back', passes_path %>
+<%= link_to 'Edit', edit_pass_path(@pass), class: 'medium button' %>
+<%= link_to 'Back', passes_path, class: 'secondary medium button' %>

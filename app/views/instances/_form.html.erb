@@ -11,19 +11,33 @@
     </div>
   <% end %>
 
-	<div class="field">
-    <%= f.label :pass_id %><br />
+	<div class="row">
+    <div class="three columns">
+    <%= f.label :pass_id, class: 'inline' %>
+  </div>
+  <div class="nine columns">
     <%= f.collection_select :pass_id, Pass.all, :id, :to_s %>
   </div>
-  <div class="field">
-    <%= f.label :relevant_date %><br />
+  </div>
+  <div class="row">
+    <div class="three columns">
+    <%= f.label :relevant_date, class: 'inline' %>
+      </div>
+      <div class="nine columns">
+        <div class="row" id="date-select">
     <%= f.datetime_select :relevant_date %>
   </div>
-  <div class="field">
-    <%= f.label :description %><br />
-    <%= f.text_field :description %>
+    </div>
   </div>
-  <div class="actions">
-    <%= f.submit %>
+  <div class="row">
+    <div class="three columns">
+    <%= f.label :description, class: 'inline' %>
+      </div>
+      <div class="nine columns">
+    <%= f.text_field :description %>
+    </div>
+  </div>
+  <div class="actions text-right">
+    <%= f.submit class: "success large button" %>
   </div>
 <% end %>

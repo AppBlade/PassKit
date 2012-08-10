@@ -1,6 +1,7 @@
 <h1>Listing issuances</h1>
 
 <table>
+    <thead>
   <tr>
     <th>Instance</th>
     <th>Barcode alt text</th>
@@ -12,7 +13,8 @@
     <th></th>
     <th></th>
   </tr>
-
+  </thead>
+<tbody>
 <% @issuances.each do |issuance| %>
   <tr>
     <td><%= issuance.instance %></td>
@@ -21,13 +23,14 @@
     <td><%= issuance.barcode_message %></td>
     <td><%= issuance.barcode_message_encoding %></td>
     <td><%= issuance.email %></td>
-    <td><%= link_to 'Show', issuance %></td>
-    <td><%= link_to 'Edit', edit_issuance_path(issuance) %></td>
-    <td><%= link_to 'Destroy', issuance, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= link_to 'Show', issuance, class: 'small button' %></td>
+    <td><%= link_to 'Edit', edit_issuance_path(issuance), class: 'secondary small button' %></td>
+    <td><%= link_to 'Destroy', issuance, method: :delete, data: { confirm: 'Are you sure?' }, class: 'alert small button' %></td>
   </tr>
 <% end %>
+</tbody>
 </table>
 
 <br />
 
-<%= link_to 'New Issuance', new_issuance_path %>
+<%= link_to 'New Issuance', new_issuance_path, class: 'secondary medium button' %>
