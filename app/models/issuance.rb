@@ -1,6 +1,6 @@
 class Issuance < ActiveRecord::Base
 
-	attr_accessible :barcode_alt_text, :email, :instance_id
+	attr_accessible :barcode_alt_text, :barcode_message, :email, :instance_id
 
 	delegate  :barcode_format, :barcode_message_encoding, :icon, :icon_2x, :logo, :logo_2x, :background, :background_2x, :background_color, :foreground_color, :logo_text, :label_color, :description, :relevant_date, :pass, :organization_name, :pass_type_identifier, :team_identifier, :to => :instance
 	delegate  :icon?, :icon_2x?, :logo?, :logo_2x?, :background?, :background_2x?, :background_color?, :foreground_color?, :label_color?, :to => :instance
