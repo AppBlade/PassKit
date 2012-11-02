@@ -37,6 +37,22 @@
     <%= f.text_field :description %>
     </div>
 	</div>
+  <div class="row">
+    <div class="five columns">
+    <%= f.label :barcode_format, class: 'inline' %>
+        </div>
+    <div class="seven columns">
+    <%= f.select :barcode_format, Instance::BarcodeFormats %>
+  </div>
+  </div>
+  <div class="row">
+    <div class="five columns">
+    <%= f.label :barcode_message_encoding, class: 'inline' %>
+        </div>
+    <div class="seven columns">
+    <%= f.select :barcode_message_encoding, Instance::BarcodeMessageEncodings %>
+  </div>
+  </div>
 
 	<div class="row">
     <div class="three columns">

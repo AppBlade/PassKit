@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  issuance_id: 1
+  push_token: MyString
+  device_library_identifier: MyString
+
+two:
+  issuance_id: 1
+  push_token: MyString
+  device_library_identifier: MyString

@@ -11,14 +11,14 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120810214330) do
+ActiveRecord::Schema.define(:version => 20121102200719) do
 
   create_table "instances", :force => true do |t|
     t.datetime "relevant_date"
     t.string   "description"
     t.integer  "pass_id"
-    t.datetime "created_at",           :null => false
-    t.datetime "updated_at",           :null => false
+    t.datetime "created_at",               :null => false
+    t.datetime "updated_at",               :null => false
     t.string   "logo"
     t.string   "logo_2x"
     t.string   "background"
@@ -30,17 +30,18 @@ ActiveRecord::Schema.define(:version => 20120810214330) do
     t.string   "label_color"
     t.string   "logo_text"
     t.boolean  "suppress_strip_shine"
+    t.string   "barcode_format"
+    t.string   "barcode_message_encoding"
   end
 
   create_table "issuances", :force => true do |t|
     t.integer  "instance_id"
     t.string   "barcode_alt_text"
-    t.string   "barcode_format"
     t.string   "barcode_message"
-    t.string   "barcode_message_encoding"
     t.string   "email"
-    t.datetime "created_at",               :null => false
-    t.datetime "updated_at",               :null => false
+    t.datetime "created_at",          :null => false
+    t.datetime "updated_at",          :null => false
+    t.string   "registration_secret"
   end
 
   create_table "passes", :force => true do |t|
@@ -51,6 +52,14 @@ ActiveRecord::Schema.define(:version => 20120810214330) do
     t.datetime "updated_at",           :null => false
     t.string   "p12_file"
     t.string   "p12_passcode"
+  end
+
+  create_table "registrations", :force => true do |t|
+    t.integer  "issuance_id"
+    t.string   "push_token"
+    t.string   "device_library_identifier"
+    t.datetime "created_at",                :null => false
+    t.datetime "updated_at",                :null => false
   end
 
 end

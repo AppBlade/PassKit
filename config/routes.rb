@@ -8,6 +8,16 @@ PassKit::Application.routes.draw do
 
 	root :to => 'passes#index'
 
+  namespace :api do
+    namespace :v1 do 
+      post   'devices/:device_library_identifier/registrations/:com_identifier/:issuance_id' => 'registrations#create',  :constraints => { :com_identifier => /.*/ }
+      delete 'devices/:device_library_identifier/registrations/:com_identifier/:issuance_id' => 'registrations#destroy', :constraints => { :com_identifier => /.*/ }
+      get    'devices/:device_library_identifier/registrations/:com_identifier'     => 'registrations#index',   :constraints => { :com_identifier => /.*/ }
+      get    'passes/:com_identifier/:issuance_id' => 'registrations#show', :constraints => { :com_identifier => /.*/ }
+      post   'log' => 'logs#create'
+    end
+  end
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
